@@ -20,7 +20,7 @@ VOLUME  ["/etc/mysql", "/var/lib/mysql" ]
 
 EXPOSE 80 3306
 
-RUN requirements="libmcrypt-dev g++ libicu-dev libmcrypt4 libicu52 php5-mcrypt php5-intl curl" \
+RUN requirements="libmcrypt-dev g++ libicu-dev libmcrypt4 libicu52 curl php5-mcrypt php5-intl php5-curl" \
     && apt-get update && apt-get install -y $requirements \
     && requirementsToRemove="libmcrypt-dev g++ libicu-dev" \
     && apt-get purge --auto-remove -y $requirementsToRemove \
