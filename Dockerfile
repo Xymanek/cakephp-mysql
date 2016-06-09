@@ -3,7 +3,7 @@
 FROM tutum/lamp
 MAINTAINER xymanek <xymanek@outlook.com>
 
-RUN requirements="libmcrypt-dev g++ libicu-dev libmcrypt4 libicu52 php5-mcrypt php5-intl" \
+RUN requirements="libmcrypt-dev g++ libicu-dev libmcrypt4 libicu52 php5-mcrypt php5-intl curl" \
     && apt-get update && apt-get install -y $requirements \
     && requirementsToRemove="libmcrypt-dev g++ libicu-dev" \
     && apt-get purge --auto-remove -y $requirementsToRemove \
