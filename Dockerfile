@@ -1,3 +1,5 @@
+# Based on occitech/cakephp. All credit goes there!
+# Only next line is changed
 FROM tutum/lamp
 MAINTAINER xymanek <xymanek@outlook.com>
 
