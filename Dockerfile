@@ -4,7 +4,7 @@ FROM tutum/lamp
 MAINTAINER xymanek <xymanek@outlook.com>
 
 RUN requirements="libmcrypt-dev g++ libicu-dev libmcrypt4 libicu52" \
-    && apt-get install -y $requirements \
+    && apt-get update && apt-get install -y $requirements \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install mcrypt \
     && docker-php-ext-install mbstring \
