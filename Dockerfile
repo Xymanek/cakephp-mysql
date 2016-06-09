@@ -18,6 +18,8 @@ RUN a2enmod rewrite
 # Add volumes for MySQL 
 VOLUME  ["/etc/mysql", "/var/lib/mysql" ]
 
+RUN service mysql restart
+
 EXPOSE 80 3306
 
 RUN requirements="libmcrypt-dev g++ libicu-dev libmcrypt4 libicu52 curl php5-mcrypt php5-intl php5-curl" \
