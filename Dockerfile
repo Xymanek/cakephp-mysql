@@ -5,8 +5,8 @@ MAINTAINER xymanek <xymanek@outlook.com>
 ENV DEBIAN_FRONTEND noninteractive
 ENV MYSQL_ROOT_PASS root
 
-echo mysql-server mysql-server/root_password password $MYSQL_ROOT_PASS | debconf-set-selections
-echo mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASS | debconf-set-selections
+RUN echo mysql-server mysql-server/root_password password $MYSQL_ROOT_PASS | debconf-set-selections
+RUN echo mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASS | debconf-set-selections
 
 RUN apt-get update && \
   apt-get -y install git apache2 libapache2-mod-php5 mysql-server php5-mysql pwgen php-apc php5-mcrypt && \
