@@ -9,7 +9,7 @@ RUN echo mysql-server mysql-server/root_password password $MYSQL_ROOT_PASS | deb
 RUN echo mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASS | debconf-set-selections
 
 RUN apt-get update && \
-  apt-get -y install git apache2 libapache2-mod-php5 mysql-server php5-mysql pwgen php-apc php5-mcrypt && \
+  apt-get -y install git apache2 libapache2-mod-php5 mysql-server php5-mysql pwgen php-apc php5-mcrypt
 
 # config to enable .htaccess
 ADD apache_default /etc/apache2/sites-available/000-default.conf
