@@ -1,7 +1,24 @@
-# Based on occitech/cakephp. All credit goes there!
-# Changed next line (inheritance) and php extensions install method (now using apt-get)
-FROM tutum/lamp
+# Based on occitech/cakephp and tutum/lamp. All credit goes there!
+FROM ubuntu:trusty
 MAINTAINER xymanek <xymanek@outlook.com>
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV MYSQL_ROOT_PASS root
+
+echo mysql-server mysql-server/root_password password $MYSQL_ROOT_PASS | debconf-set-selections
+echo mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASS | debconf-set-selections
+
+RUN apt-get update && \
+  apt-get -y install git apache2 libapache2-mod-php5 mysql-server php5-mysql pwgen php-apc php5-mcrypt && \
+
+# config to enable .htaccess
+ADD apache_default /etc/apache2/sites-available/000-default.conf
+RUN a2enmod rewrite
+
+# Add volumes for MySQL 
+VOLUME  ["/etc/mysql", "/var/lib/mysql" ]
+
+EXPOSE 80 3306
 
 RUN requirements="libmcrypt-dev g++ libicu-dev libmcrypt4 libicu52 php5-mcrypt php5-intl curl" \
     && apt-get update && apt-get install -y $requirements \
